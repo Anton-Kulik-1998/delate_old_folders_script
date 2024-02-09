@@ -17,4 +17,4 @@ RUN mkdir -p /data/directory1 /data/directory2
 # RUN pip install -r requirements.txt
 
 # Указываем точку входа для выполнения скрипта
-CMD ["python", "/app/main.py"]
+CMD ["python", "main.py"]
