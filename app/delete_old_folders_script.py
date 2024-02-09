@@ -10,7 +10,7 @@ def delete_old_folders(directory_path, days_to_keep):
             dir_path = os.path.join(root, dir)
             folder_age = age_in_days(dir_path)
             if folder_age > days_to_keep:
-                remove_this_dir(dir_path)
+                remove_this_dir_recursive(dir_path)
         #   for file in files:
         #     file_path = os.path.join(root, file)
         #     file_age = age_in_days(file_path)
@@ -24,7 +24,7 @@ def age_in_days(path):
     return (datetime.datetime.now() - datetime.datetime.fromtimestamp(os.path.getmtime(path))).days
 
         
-def remove_this_dir(dir_path):
+def remove_this_dir_recursive(dir_path):
     shutil.rmtree(dir_path)
     print(f"Folder: {dir_path} has been deleted.")
 
@@ -34,13 +34,14 @@ def remove_this_file(file_path):
     print(f"File {file_path} has been deleted.")
 
 
-def check_and_remove_old_files(directory_path, days_to_keep, time_to_sleep):
+def check_old_files(directory_path, days_to_keep, time_to_sleep):
     while True:
         try:
-            print(f"Проверка на наличие старых файлов в {directory_path}")
-            delete_old_folders(directory_path, days_to_keep)
-            print("Проверка завершена. Ждем 24 часа перед следующей проверкой...")
-            time.sleep(time_to_sleep)
+            for dir in directory_path:
+                print(f"Проверка на наличие старых файлов в {dir}")
+                delete_old_folders(dir, days_to_keep)
+            print(f"Проверка завершена. Ожидание перед следующей проверкой... ({time_to_sleep} часа)")
+            time.sleep(time_to_sleep * 60 * 60) # задержка в 24 часа (24 * 60 * 60 = 86400)
         except Exception as e:
             print(f"Ошибка при выполнении проверки: {e}")
 
