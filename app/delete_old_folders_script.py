@@ -41,11 +41,11 @@ def check_old_files(directory_path, days_to_keep, time_to_sleep):
                 print(f"Проверка на наличие старых файлов в {dir}")
                 delete_old_folders(dir, days_to_keep)
             # Получение текущей даты и времени
-            current_datetime = datetime.now()
-            print(f"Проверка завершена! Дата проверки: {current_datetime.strftime("%d-%m-%Y %H:%M:%S")}\nОжидание перед следующей проверкой... ({time_to_sleep} часа)")
+            current_datetime = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+            print(f"Проверка завершена! Дата проверки: {current_datetime}\nОжидание перед следующей проверкой... ({time_to_sleep} часа)")
             time.sleep(time_to_sleep * 60 * 60) # задержка в 24 часа (24 * 60 * 60 = 86400)
         except Exception as e:
-            current_datetime = datetime.now()
-            print(f"Ошибка при выполнении проверки: {e}\nДата ошибки: {current_datetime.strftime("%d-%m-%Y %H:%M:%S")}")
+            current_datetime = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+            print(f"Ошибка при выполнении проверки: {e}\nДата ошибки: {current_datetime}")
 
 
