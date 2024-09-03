@@ -1,5 +1,5 @@
 # Используйте официальный образ Python
-FROM python:3.9.6
+FROM python:3.11.3
 
 # Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /delete_old_folders_script
