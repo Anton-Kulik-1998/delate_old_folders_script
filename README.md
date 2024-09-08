@@ -9,7 +9,7 @@ This script is designed to automatically delete old daily records from surveilla
 
 - **Waiting and rechecking**: After cleaning the directory, the script waits for 24 hours and then repeats the check in an infinite loop, ensuring regular cleaning of the directory.
 
-- **Written in Python 3.9.6**: The script is written in the Python programming language version 3.9.6, providing cross-platform compatibility and ease of use.
+- **Written in Python 3.10**: The script is written in the Python programming language version 3.10, providing cross-platform compatibility and ease of use.
 
 - **Uses standard Python modules**: To work with files, the script uses standard modules `os` and `shutil`, making it easy to understand and modify.
 
@@ -30,4 +30,4 @@ This script is designed to automatically delete old daily records from surveilla
 
 ```bash
 docker build -t delete-old-files .
-docker run -v /path/to/local/directory1:/data/directory1 -v /path/to/local/directory1:/data/directory2 delete-old-files
+docker run -it -v /path/to/local/directory1:/data/directory1 -v /path/to/local/directory1:/data/directory2 delete-old-files
